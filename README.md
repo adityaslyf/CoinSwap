@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DeFi DApp Development
+
+## Overview
+
+This project is a decentralized finance (DeFi) application built with Next.js and TypeScript. It features robust functionalities for wallet connectivity, token swapping, and real-time cryptocurrency price charting.
+
+## Features
+
+1. **Wallet Connection**: Connect to Ethereum wallets using MetaMask or WalletConnect.
+2. **Cryptocurrency Price Charting**: Real-time and historical price charting using the TradingView library.
+3. **Token Swapping**: Execute ERC-20 token swaps using the 0x protocol.
+
+## Tech Stack
+
+- **Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: CSS
+- **Web3 Library**: Web3.js
+- **Charting Library**: TradingView Widget
+- **API Integration**: 0x Protocol, CoinGecko
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ensure you have the following installed:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v14 or later)
+- npm or yarn
+- MetaMask extension in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository**:
+    ```bash
+    git clone git@github.com:adityaslyf/CoinSwap.git
+    ```
 
-## Learn More
+2. **Install dependencies**:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Set up environment variables**:
+   Create a `.env.local` file in the root directory and add your 0x API key:
+    ```bash
+    NEXT_PUBLIC_0X_API_KEY=your_0x_api_key_here
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server**:
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Wallet Connection
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Click on the "Connect Wallet" button.
+2. Choose your preferred wallet (MetaMask or WalletConnect).
+3. Approve the connection request in your wallet.
+
+### Token Swapping
+
+1. Select the tokens you want to swap by clicking on the "Select a Token" button.
+2. Enter the amount of the token you want to swap.
+3. Click on the "Swap" button to execute the transaction.
+4. Confirm the transaction in your wallet.
+
+### Price Charting
+
+The price chart is displayed on the main interface. You can view real-time and historical price data for different cryptocurrencies.
+
+## Project Structure
+
+- **`components/SwapForm.tsx`**: Component for token swapping.
+- **`components/ChartTwo.tsx`**: Component for displaying the TradingView chart.
+- **`components/Navbar.tsx`**: Navigation bar component with wallet connection functionality.
+- **`pages/index.tsx`**: Main page of the application.
+
+## Dependencies
+
+- **Web3.js**: For blockchain interactions.
+- **TradingView Widget**: For displaying real-time and historical price charts.
+- **0x Protocol**: For token swapping functionality.
+- **Bootstrap**: For styling the UI.
+
+
+## Acknowledgements
+
+- [0x Protocol](https://0x.org/)
+- [CoinGecko](https://www.coingecko.com/)
+- [TradingView](https://www.tradingview.com/)
+- [MetaMask](https://metamask.io/)
+
+## Contact
+
+For any questions or suggestions, please open an issue in the repository or contact me directly at [aditya.varshneymail@gmail.com](mailto:aditya.varshneymail@gmail.com).
