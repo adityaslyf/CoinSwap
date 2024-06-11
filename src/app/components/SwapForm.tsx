@@ -236,7 +236,7 @@ const SwapForm: React.FC = () => {
 
   return (
     <div className="container">
-      <div className=" bg-gra7">
+      <div className=" bg-gray">
         <Navbar onConnect={connectWallet} />
       </div>
 

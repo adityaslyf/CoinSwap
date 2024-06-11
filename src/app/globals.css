@@ -3,104 +3,100 @@
 @tailwind utilities;
 
 #window {
-    margin-top: 50px;
-    background-color: #1a1a1a; /* Dark background color */
-    color: #eaeaea; /* Light text color */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Softer shadow */
+  margin-top: 50px;
+  background-color: #1a1a1a;
+  color: #eaeaea;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .swapbox_select {
-    width: 50%;
-    float: left;
+  width: 50%;
+  float: left;
 }
 
 .swapbox {
-    overflow: auto;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #2e2e2e; /* Slightly lighter than #1a1a1a */
-    border-radius: 15px;
-    border: 1px solid #444; /* Darker border color */
+  overflow: auto;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #2e2e2e;
+  border-radius: 15px;
+  border: 1px solid #444;
 }
 
 .token_select {
-    padding: 10px 0; /* Increased padding for better spacing */
-    text-align: center; /* Center-align text */
-    border-radius: 10px;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .token_select:hover {
-    background-color: #3d3d3d; /* Slightly lighter hover effect */
-    cursor: pointer;
+  background-color: #3d3d3d;
+  cursor: pointer;
 }
 
 .token_row {
-    padding: 10px 15px; /* Increased padding */
-    border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
 
 .token_row:hover {
-    background-color: #525252; /* Darker hover effect */
-    color: #fff; /* White text on hover */
-    cursor: pointer;
+  background-color: #525252;
+  color: #fff;
+  cursor: pointer;
 }
 
 .gas_estimate_label {
-    padding: 10px; /* Increased padding */
-    font-size: 1.1em; /* Slightly larger font size */
-    color: #b3b3b3; /* Lighter text color */
+  padding: 10px;
+  font-size: 1.1em;
+  color: #b3b3b3;
 }
 
 .modal-body {
-    height: 500px;
-    overflow-y: auto; /* Changed to auto for better scroll behavior */
-    background-color: #1a1a1a; /* Match modal background with main window */
-    color: #eaeaea; /* Match modal text with main window */
-    padding: 15px;
+  height: 500px;
+  overflow-y: auto;
+  background-color: #1a1a1a;
+  color: #eaeaea;
+  padding: 15px;
 }
 
 .modal-header {
-    background-color: #2e2e2e; /* Match header with swapbox background */
-    border-bottom: 1px solid #444; /* Darker border color */
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #444;
 }
-
 .modal-content {
-    background-color: #2e2e2e; /* Match content with swapbox background */
-    border-radius: 15px; /* Rounded corners */
+  background-color: #2e2e2e;
+  border-radius: 15px;
 }
 
 .modal-title {
-    color: #eaeaea; /* Light title color */
+  color: #eaeaea;
 }
 
 .close {
-    color: #eaeaea; /* Light close button color */
+  color: #eaeaea;
 }
-
 #login_button {
-    background-color: #007bff; /* Primary button color */
-    color: #fff; /* White text */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Increased padding */
-    border-radius: 5px; /* Rounded corners */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 #login_button:hover {
-    background-color: #0056b3; /* Darker hover effect */
+  background-color: #0056b3;
 }
 
 #swap_button {
-    background-color: #28a745; /* Success button color */
-    color: #fff; /* White text */
-    border: none; /* Remove border */
-    padding: 15px; /* Increased padding */
-    border-radius: 5px; /* Rounded corners */
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 #swap_button:hover {
-    background-color: #218838; /* Darker hover effect */
+  background-color: #218838;
 }
-
-    
