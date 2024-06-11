@@ -61,7 +61,7 @@ export const ChartTwo: React.FC = () => {
              }}
              className="rounded-[10px] border-[0.5px] border-white/20 overflow-hidden mt-0" id="tradingview">
       </div>
-  );
+  );  
 };
 
 // import React, { useState, useEffect, useRef } from "react";
