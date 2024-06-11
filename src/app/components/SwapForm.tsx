@@ -1,9 +1,15 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import BigNumber from 'bignumber.js';
 import qs from 'qs';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './Navbar';  
+declare global {
+    interface Window{
+      ethereum?: any;
+    }
+  }
 interface Token {
   symbol: string;
   logoURI: string;
@@ -15,6 +21,8 @@ const SwapForm: React.FC = () => {
   const [tokens, setTokens] = useState<Token[]>([]);
   const [currentTrade, setCurrentTrade] = useState<{ from?: Token; to?: Token }>({});
   const [currentSelectSide, setCurrentSelectSide] = useState<string>('');
+  const [web3, setWeb3] = useState<Web3 | null>(null);
+  const [account, setAccount] = useState<string | null>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -54,10 +62,14 @@ const SwapForm: React.FC = () => {
     document.getElementById("token_modal")!.style.display = "none";
   };
 
-  const connect = async () => {
+  const connectWallet = async () => {
     if (typeof window.ethereum !== "undefined") {
       try {
+        const web3Instance = new Web3(window.ethereum);
         await window.ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await web3Instance.eth.getAccounts();
+        setAccount(accounts[0]);
+        setWeb3(web3Instance);
         document.getElementById("login_button")!.innerText = "Connected";
         document.getElementById("swap_button")!.removeAttribute("disabled");
       } catch (error) {
@@ -69,19 +81,19 @@ const SwapForm: React.FC = () => {
   };
 
   const getPrice = async () => {
-    if (!currentTrade.from || !currentTrade.to || !document.getElementById("from_amount")!.value) return;
+    if (!currentTrade.from || !currentTrade.to || !(document.getElementById("from_amount")! as HTMLInputElement).value) return;
 
     const amount = Number((document.getElementById("from_amount")! as HTMLInputElement).value) * (10 ** currentTrade.from.decimals);
     const params = {
-      sellToken: currentTrade.from.address,
-      buyToken: currentTrade.to.address,
-      sellAmount: amount,
+        sellToken: currentTrade.from.address,
+        buyToken: currentTrade.to.address,
+        sellAmount: amount,
     };
 
     const headers = {
-      '0x-api-key': process.env.NEXT_PUBLIC_0X_API_KEY as string,
+        '0x-api-key': process.env.NEXT_PUBLIC_0X_API_KEY as string,
     };
-console.log(headers)
+
     const response = await fetch(`https://api.0x.org/swap/v1/quote?${qs.stringify(params)}`, { headers });
     const swapQuoteJSON = await response.json();
 
@@ -92,14 +104,14 @@ console.log(headers)
   };
 
   const getQuote = async (account: string) => {
-    if (!currentTrade.from || !currentTrade.to || !document.getElementById("from_amount")!.value) return;
+    if (!currentTrade.from || !currentTrade.to || !(document.getElementById("from_amount")! as HTMLInputElement).value) return;
 
     const amount = Number((document.getElementById("from_amount")! as HTMLInputElement).value) * (10 ** currentTrade.from.decimals);
     const params = {
-      sellToken: currentTrade.from.address,
-      buyToken: currentTrade.to.address,
-      sellAmount: amount,
-      takerAddress: account,
+        sellToken: currentTrade.from.address,
+        buyToken: currentTrade.to.address,
+        sellAmount: amount,
+        takerAddress: account,
     };
 
     const response = await fetch(`https://api.0x.org/swap/v1/quote?${qs.stringify(params)}`);
@@ -112,12 +124,9 @@ console.log(headers)
   };
 
   const trySwap = async () => {
-    const accounts = await window.ethereum.request({ method: "eth_accounts" });
-    const takerAddress = accounts[0];
-
-    const swapQuoteJSON = await getQuote(takerAddress);
+    if (!web3 || !account) return;
+    const swapQuoteJSON = await getQuote(account);
     const erc20abi = [
-      // Your ERC20 ABI here
       {
         "constant": true,
         "inputs": [],
@@ -155,15 +164,23 @@ console.log(headers)
         "stateMutability": "nonpayable",
         "type": "function"
       },
-      // ...add other ERC20 function ABIs as needed
     ];
     const fromTokenAddress = currentTrade.from!.address;
-    const web3 = new Web3(Web3.givenProvider);
     const ERC20TokenContract = new web3.eth.Contract(erc20abi, fromTokenAddress);
 
     const maxApproval = new BigNumber(2).pow(256).minus(1);
 
-    await ERC20TokenContract.methods.approve(swapQuoteJSON.allowanceTarget, maxApproval).send({ from: takerAddress });
+    await ERC20TokenContract.methods.approve(swapQuoteJSON.allowanceTarget, maxApproval).send({ from: account });
+
+    const txParams = {
+      ...swapQuoteJSON,
+      from: account,
+      gas: swapQuoteJSON.estimatedGas
+    };
+
+    await web3.eth.sendTransaction(txParams).on('transactionHash', (hash) => {
+      console.log(`Transaction hash: ${hash}`);
+    });
   };
 
   useEffect(() => {
@@ -172,6 +189,10 @@ console.log(headers)
 
   return (
     <div className="container">
+        <div className=' bg-gra7'>
+        <Navbar onConnect={connectWallet} />
+        </div>
+      
       <div className="row">
         <div className="col col-md-6 offset-md-3" id="window">
           <h4>Swap</h4>

@@ -2,47 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
-#window{
+#window {
     margin-top: 50px;
-    background-color: #000;
-    color: #fff;
-    padding: 15px;
-    border-radius: 20px;
-    box-shadow: 0 0 5px black;
+    background-color: #1a1a1a; /* Dark background color */
+    color: #eaeaea; /* Light text color */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Softer shadow */
 }
+
 .swapbox_select {
     width: 50%;
     float: left;
 }
-.swapbox{
+
+.swapbox {
     overflow: auto;
     margin: 20px 0;
     padding: 20px;
-    background-color: #2f2f2f;
-    border-radius: 20px;
-    border: 1px solid #565656;
+    background-color: #2e2e2e; /* Slightly lighter than #1a1a1a */
+    border-radius: 15px;
+    border: 1px solid #444; /* Darker border color */
 }
-.token_select{
-    padding:5px 0;
+
+.token_select {
+    padding: 10px 0; /* Increased padding for better spacing */
+    text-align: center; /* Center-align text */
+    border-radius: 10px;
 }
-.token_select:hover{
-    background-color: #464646;
-    cursor: pointer;
-    
-}
-.token_row{
-    padding: 5px 10px;
-}
-.token_row:hover{
-    background-color: #e4e4e4;
+
+.token_select:hover {
+    background-color: #3d3d3d; /* Slightly lighter hover effect */
     cursor: pointer;
 }
-.gas_estimate_label{
-    padding:5px;
+
+.token_row {
+    padding: 10px 15px; /* Increased padding */
+    border-radius: 10px;
 }
-.modal-body{
+
+.token_row:hover {
+    background-color: #525252; /* Darker hover effect */
+    color: #fff; /* White text on hover */
+    cursor: pointer;
+}
+
+.gas_estimate_label {
+    padding: 10px; /* Increased padding */
+    font-size: 1.1em; /* Slightly larger font size */
+    color: #b3b3b3; /* Lighter text color */
+}
+
+.modal-body {
     height: 500px;
-    overflow: scroll;   
+    overflow-y: auto; /* Changed to auto for better scroll behavior */
+    background-color: #1a1a1a; /* Match modal background with main window */
+    color: #eaeaea; /* Match modal text with main window */
+    padding: 15px;
+}
+
+.modal-header {
+    background-color: #2e2e2e; /* Match header with swapbox background */
+    border-bottom: 1px solid #444; /* Darker border color */
+}
+
+.modal-content {
+    background-color: #2e2e2e; /* Match content with swapbox background */
+    border-radius: 15px; /* Rounded corners */
+}
+
+.modal-title {
+    color: #eaeaea; /* Light title color */
+}
+
+.close {
+    color: #eaeaea; /* Light close button color */
+}
+
+#login_button {
+    background-color: #007bff; /* Primary button color */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Increased padding */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#login_button:hover {
+    background-color: #0056b3; /* Darker hover effect */
+}
+
+#swap_button {
+    background-color: #28a745; /* Success button color */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    padding: 15px; /* Increased padding */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#swap_button:hover {
+    background-color: #218838; /* Darker hover effect */
 }
 
     

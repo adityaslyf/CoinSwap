@@ -1,15 +1,19 @@
+import { ChartTwo } from "../app/components/ChartTwo";
 
-import {ChartTwo} from '../app/components/ChartTwo'
-// import MetaMaskConnect from './components/MetaMaskConnect'
-import Navbar from './components/Navbar'
-import SwapForm from './components/SwapForm'
+import SwapForm from "./components/SwapForm";
+import Navbar from "./components/Navbar";
 export default function Home() {
   return (
-    <main className="flex min-h-screen h-screen flex-col items-center justify-between p-24">
-<Navbar />
-    <ChartTwo />
-    {/* <MetaMaskConnect /> */}
-    <SwapForm />
-  </main>
+    <main className="flex bg-gray-700 p-4 h-screen">
+      {/* <Navbar /> */}
+      
+      <SwapForm />
+      <div className=" h-[600px] w-full">
+      <ChartTwo />
+      </div>
+     
+      {/* <MetaMaskConnect /> */}
+   
+    </main>
   );
-} 
+}
